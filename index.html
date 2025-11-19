@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .heart {
+            position: absolute;
+            color: #4ade80;
+            font-size: 20px;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-30px) rotate(15deg);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 90%;
+            margin: 20px;
+            overflow: hidden;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '💚';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.2;
+            top: -20px;
+            right: -20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .letter {
+            padding: 20px;
+        }
+
+        .letter h2 {
+            color: #22c55e;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .letter p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            color: #666;
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+
+        .bouquet {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .bouquet h3 {
+            color: #22c55e;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .cars-container {
+            position: relative;
+            width: 300px;
+            height: 350px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .car {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: rotate(var(--rotation));
+            transition: transform 0.3s ease;
+            animation: carBounce 2s infinite ease-in-out;
+            animation-delay: var(--delay);
+            cursor: pointer;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .car img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .car:hover {
+            transform: rotate(var(--rotation)) scale(1.2);
+            z-index: 10;
+        }
+
+        @keyframes carBounce {
+            0%, 100% { transform: rotate(var(--rotation)) translateY(0); }
+            50% { transform: rotate(var(--rotation)) translateY(-10px); }
+        }
+
+        .stem {
+            width: 15px;
+            height: 120px;
+            background: linear-gradient(to bottom, #4ade80, #22c55e);
+            border-radius: 10px;
+            position: absolute;
+            bottom: -60px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .ribbon {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 50px;
+        }
+
+        .ribbon-part {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: #ef4444;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        .ribbon-part:first-child {
+            left: 0;
+            animation: ribbonWave 2s infinite ease-in-out;
+        }
+
+        .ribbon-part:last-child {
+            right: 0;
+            animation: ribbonWave 2s infinite ease-in-out 0.5s;
+        }
+
+        @keyframes ribbonWave {
+            0%, 100% { transform: rotateZ(0deg); }
+            50% { transform: rotateZ(10deg); }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .cars-container {
+                width: 250px;
+                height: 300px;
+            }
+
+            .car {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        .footer {
+            background: #f3f4f6;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Para el Amor de Mi Vida 💚</h1>
+            <p>Día del Hombre - 19 de Noviembre 2025</p>
+        </div>
+
+        <div class="content">
+            <div class="letter">
+                <h2>Mi Amor:</h2>
+                <p>
+                    En este día especial quiero que sepas lo importante que eres para mí. Cada momento a tu lado es como una aventura emocionante, tan divertida como cuando éramos niños jugando sin saber de la existencia del otro .
+                </p>
+                <p>
+                    Por eso te preparé este ramo especial de Hot Wheels, porque sé cuánto te gustan y porque representan todas las aventuras que viviremos juntos, todo el camino que nos faltan por recorrer.
+                </p>
+                <p>
+                    Cada carrito simboliza un momento especial: nuestras risas, nuestros sueños, nuestras locuras y todo el amor que compartimos. Eres mi compañero de vida, Mi luz en los dias mas complicados y mi amor eterno.
+                </p>
+                <p>
+                    Gracias por ser quien eres, por hacerme sonreír cada día y por ser el hombre maravilloso que conquistó mi corazón.
+                </p>
+                <div class="signature">
+                    Con todo mi amor 💚<br>
+                    Virginia
+                </div>
+            </div>
+
+            <div class="bouquet">
+                <h3>🏎️ Tu Ramo Especial 🏎️</h3>
+                <div class="cars-container">
+                    <div class="stem"></div>
+                    <div class="ribbon">
+                        <div class="ribbon-part"></div>
+                        <div class="ribbon-part"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            "Acelerando juntos hacia nuestro futuro 🏁💚"
+        </div>
+    </div>
+
+    <script>
+        // Crear corazones flotantes
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💚';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.body.appendChild(heart);
+        }
+
+        for (let i = 0; i < 15; i++) {
+            createHeart();
+        }
+
+        // Crear carritos Hot Wheels
+        const carsContainer = document.querySelector('.cars-container');
+        const carColors = [
+            'linear-gradient(135deg, #ef4444, #dc2626)',
+            'linear-gradient(135deg, #3b82f6, #2563eb)',
+            'linear-gradient(135deg, #fbbf24, #f59e0b)',
+            'linear-gradient(135deg, #10b981, #059669)',
+            'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+            'linear-gradient(135deg, #ec4899, #db2777)',
+            'linear-gradient(135deg, #06b6d4, #0891b2)',
+            'linear-gradient(135deg, #f97316, #ea580c)'
+        ];
+
+        const carImages = [
+            'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=200',
+            'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=200',
+            'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200',
+            'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=200',
+            'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=200'
+        ];
+
+        const rotations = [-15, -25, -10, 15, 25, 10, -20, 20];
+
+        for (let i = 0; i < 8; i++) {
+            const car = document.createElement('div');
+            car.className = 'car';
+            car.style.setProperty('--rotation', rotations[i] + 'deg');
+            car.style.setProperty('--delay', (i * 0.2) + 's');
+            car.style.background = carColors[i];
+            
+            const img = document.createElement('img');
+            img.src = carImages[i % carImages.length];
+            img.alt = 'Hot Wheels Car';
+            img.style.filter = 'brightness(1.1) contrast(1.2)';
+            
+            car.appendChild(img);
+            carsContainer.appendChild(car);
+        }
+
+        // Efecto de click en los carritos
+        document.querySelectorAll('.car').forEach(car => {
+            car.addEventListener('click', function() {
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = 'carBounce 2s infinite ease-in-out';
+                }, 10);
+            });
+        });
+    </script>
+</body>
+</html>
